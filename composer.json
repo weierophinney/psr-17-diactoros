@@ -1,0 +1,16 @@
+{
+    "name": "weierophinney/psr-17-diactoros",
+    "autoload": {
+        "psr-4": {
+            "Psr\\Http\\Message\\": "src/interfaces/",
+            "Mwop\\Http\\DecoratedFactories\\": "src/decoration/",
+            "Mwop\\Http\\StaticBackedFactories\\": "src/static/",
+            "Mwop\\Http\\TraitFactories\\": "src/trait/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MwopTest\\": "test/"
+        }
+    }
+}
