@@ -2,13 +2,24 @@
 
 namespace Mwop\Http\Message;
 
+use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
-use Psr\Http\Message\UploadedFileFactoryInterface;
+use Psr\Http\Message\UploadedFileCollaboratorsFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Zend\Diactoros\UploadedFile;
 
-class UploadedFileFactory implements UploadedFileFactoryInterface
+class UploadedFileFactory implements UploadedFileCollaboratorsFactoryInterface
 {
+    /**
+     * @var StreamFactoryInterface
+     */
+    private $streamFactory;
+
+    public function __construct(StreamFactoryInterface $streamFactory = null)
+    {
+        $this->streamFactory = $streamFactory ?: new StreamFactory();
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -26,5 +37,29 @@ class UploadedFileFactory implements UploadedFileFactoryInterface
             $clientFilename,
             $clientMediaType
         );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function createStream(string $content = ''): StreamInterface
+    {
+        return $this->streamFactory->createStream($content);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function createStreamFromFile(string $filename, string $mode = 'r'): StreamInterface
+    {
+        return $this->streamFactory->createStreamFromFile($filename, $mode);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function createStreamFromResource($resource): StreamInterface
+    {
+        return $this->streamFactory->createStreamFromResource($resource);
     }
 }
