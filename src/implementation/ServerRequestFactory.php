@@ -2,14 +2,16 @@
 
 namespace Mwop\Http\Message;
 
-use Psr\Http\Message\ServerRequestFactoryInterface;
+use Psr\Http\Message\ServerRequestCollaboratorsFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 use Zend\Diactoros\ServerRequest;
 
-class ServerRequestFactory implements ServerRequestFactoryInterface
+class ServerRequestFactory implements ServerRequestCollaboratorsFactoryInterface
 {
     /**
      * @var StreamFactoryInterface
