@@ -4,7 +4,7 @@
         "psr-4": {
             "Psr\\Http\\Message\\": "src/interfaces/",
             "Mwop\\Http\\DecoratedFactories\\": "src/decoration/",
-            "Mwop\\Http\\StaticBackedFactories\\": "src/static/",
+            "Mwop\\Http\\DuplicatedFactories\\": "src/duplicated/",
             "Mwop\\Http\\TraitFactories\\": "src/trait/"
         }
     },
