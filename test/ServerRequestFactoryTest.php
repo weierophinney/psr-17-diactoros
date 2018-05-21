@@ -2,6 +2,9 @@
 
 namespace MwopTest;
 
+use Mwop\Http\Message\ServerRequestFactory;
+use Mwop\Http\Message\StreamFactory;
+use Mwop\Http\Message\UriFactory;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -9,9 +12,12 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
 use Zend\Diactoros\Uri;
 
-abstract class AbstractServerRequestFactoryTest extends TestCase
+class ServerRequestFactoryTest extends TestCase
 {
-    abstract public function getFactory(): ServerRequestFactoryInterface;
+    public function getFactory(): ServerRequestFactoryInterface
+    {
+        return new ServerRequestFactory(new StreamFactory(), new UriFactory());
+    }
 
     public function testCreateServerRequestReturnsPopulatedRequestFromStringUri()
     {

@@ -2,7 +2,7 @@
 
 namespace Psr\Http\Message;
 
-interface ResponseFactoryInterface extends StreamFactoryInterface
+interface ResponseFactoryInterface
 {
     /**
      * Create a new response.

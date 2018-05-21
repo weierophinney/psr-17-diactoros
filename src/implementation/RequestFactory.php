@@ -1,17 +1,31 @@
 <?php
 
-namespace Mwop\Http\TraitFactories;
+namespace Mwop\Http\Message;
 
-use InvalidArgumentException;
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 use Zend\Diactoros\Request;
 
 class RequestFactory implements RequestFactoryInterface
 {
-    use StreamFactoryTrait;
-    use UriFactoryTrait;
+    /**
+     * @var StreamFactoryInterface
+     */
+    private $streamFactory;
+
+    /**
+     * @var UriFactoryInterface
+     */
+    private $uriFactory;
+
+    public function __construct(StreamFactoryInterface $streamFactory = null, UriFactoryInterface $uriFactory = null)
+    {
+        $this->streamFactory = $streamFactory ?: new StreamFactory();
+        $this->uriFactory = $uriFactory ?: new uriFactory();
+    }
 
     /**
      * {@inheritDoc}
@@ -19,7 +33,7 @@ class RequestFactory implements RequestFactoryInterface
     public function createRequest(string $method, $uri): RequestInterface
     {
         if (is_string($uri)) {
-            $uri = $this->createUri($uri);
+            $uri = $this->uriFactory->createUri($uri);
         }
 
         if (! $uri instanceof UriInterface) {
@@ -33,7 +47,7 @@ class RequestFactory implements RequestFactoryInterface
         return new Request(
             $uri,
             $method,
-            $this->createStream()
+            $this->streamFactory->createStream()
         );
     }
 }

@@ -2,14 +2,19 @@
 
 namespace MwopTest;
 
+use Mwop\Http\Message\StreamFactory;
+use Mwop\Http\Message\UploadedFileFactory;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
-abstract class AbstractUploadedFileFactoryTest extends TestCase
+class UploadedFileFactoryTest extends TestCase
 {
-    abstract public function getFactory(): UploadedFileFactoryInterface;
+    public function getFactory(): UploadedFileFactoryInterface
+    {
+        return new UploadedFileFactory(new StreamFactory());
+    }
 
     public function testCreateUploadedFileReturnsPopulatedInstance()
     {

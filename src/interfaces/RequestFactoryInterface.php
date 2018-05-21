@@ -2,9 +2,7 @@
 
 namespace Psr\Http\Message;
 
-interface RequestFactoryInterface extends
-    StreamFactoryInterface,
-    UriFactoryInterface
+interface RequestFactoryInterface
 {
     /**
      * Create a new request.

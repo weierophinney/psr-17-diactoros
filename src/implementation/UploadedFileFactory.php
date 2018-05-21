@@ -1,24 +1,18 @@
 <?php
 
-namespace Mwop\Http\StaticFactories;
+namespace Mwop\Http\Message;
 
 use Psr\Http\Message\StreamInterface;
+use Psr\Http\Message\UploadedFileFactoryInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Zend\Diactoros\UploadedFile;
 
-abstract class AbstractUploadedFileFactory
+class UploadedFileFactory implements UploadedFileFactoryInterface
 {
     /**
-     * Do not allow instantiation
+     * {@inheritDoc}
      */
-    private function __construct()
-    {
-    }
-        
-    /**
-     * @link \Psr\Http\Message\UploadedFileFactoryInterface::createUploadedFile
-     */
-    public static function createUploadedFile(
+    public function createUploadedFile(
         StreamInterface $stream,
         int $size = null,
         int $error = \UPLOAD_ERR_OK,

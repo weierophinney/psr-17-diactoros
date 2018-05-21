@@ -2,14 +2,19 @@
 
 namespace MwopTest;
 
+use Mwop\Http\Message\ResponseFactory;
+use Mwop\Http\Message\StreamFactory;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
-abstract class AbstractResponseFactoryTest extends TestCase
+class ResponseFactoryTest extends TestCase
 {
-    abstract public function getFactory(): ResponseFactoryInterface;
+    public function getFactory(): ResponseFactoryInterface
+    {
+        return new ResponseFactory(new StreamFactory());
+    }
 
     public function testCreateResponseReturnsResponseWithStatusAndReason()
     {

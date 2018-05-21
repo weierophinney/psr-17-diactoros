@@ -1,6 +1,6 @@
 <?php
 
-namespace Mwop\Http\DecoratedFactories;
+namespace Mwop\Http\Message;
 
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;

@@ -2,7 +2,7 @@
 
 namespace Psr\Http\Message;
 
-interface UploadedFileFactoryInterface extends StreamFactoryInterface
+interface UploadedFileFactoryInterface
 {
     /**
      * Create a new uploaded file.

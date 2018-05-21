@@ -2,13 +2,17 @@
 
 namespace MwopTest;
 
+use Mwop\Http\Message\UriFactory;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
 
-abstract class AbstractUriFactoryTest extends TestCase
+class UriFactoryTest extends TestCase
 {
-    abstract public function getFactory(): UriFactoryInterface;
+    public function getFactory(): UriFactoryInterface
+    {
+        return new UriFactory();
+    }
 
     public function testCreateUriReturnsPopulatedInstance()
     {

@@ -2,10 +2,7 @@
 
 namespace Psr\Http\Message;
 
-interface ServerRequestFactoryInterface extends
-    StreamFactoryInterface,
-    UploadedFileFactoryInterface,
-    UriFactoryInterface
+interface ServerRequestFactoryInterface
 {
     /**
      * Create a new server request.

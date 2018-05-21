@@ -2,15 +2,19 @@
 
 namespace MwopTest;
 
+use Mwop\Http\Message\StreamFactory;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 
-abstract class AbstractStreamFactoryTest extends TestCase
+class StreamFactoryTest extends TestCase
 {
     private $tempFile;
 
-    abstract public function getFactory(): StreamFactoryInterface;
+    public function getFactory(): StreamFactoryInterface
+    {
+        return new StreamFactory();
+    }
 
     public function tearDown()
     {
