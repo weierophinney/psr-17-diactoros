@@ -5,6 +5,7 @@
             "Psr\\Http\\Message\\": "src/interfaces/",
             "Mwop\\Http\\DecoratedFactories\\": "src/decoration/",
             "Mwop\\Http\\DuplicatedFactories\\": "src/duplicated/",
+            "Mwop\\Http\\StaticFactories\\": "src/static/",
             "Mwop\\Http\\TraitFactories\\": "src/trait/"
         }
     },
